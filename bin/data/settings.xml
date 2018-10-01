@@ -1,0 +1,12 @@
+<setting>
+	<group>
+		<x_frequency>0.125</x_frequency>
+		<y_frequency>0.325</y_frequency>
+		<x_width>279</x_width>
+		<y_height>225</y_height>
+		<speed>0.35</speed>
+	<numShapes>60</numShapes>
+	<x_position>50</x_position>
+	<bpm>110</bpm>
+	</group>
+</setting>
