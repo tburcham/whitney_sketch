@@ -4,8 +4,9 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "ofxBeat.h"
+#include "ofxMidi.h"
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp, public ofxMidiListener {
 
 	public:
 		void setup();
@@ -43,4 +44,7 @@ class ofApp : public ofBaseApp{
         bool bHide;
     
         vector<float> timing;
+    
+        void newMidiMessage(ofxMidiMessage& message);
+    ofxMidiIn midiIn;
 };

@@ -5,6 +5,10 @@ void ofApp::setup(){
     
     ofLog() << "GL Version" << glGetString( GL_VERSION );
     
+    midiIn.listInPorts();
+    midiIn.openPort(0);
+    midiIn.addListener(this);
+    
     //ofSetFullscreen(true);
     //ofEnable
     
@@ -108,6 +112,35 @@ void ofApp::draw(){
     }
     
     
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::newMidiMessage(ofxMidiMessage& message) {
+    
+    switch(message.control) {
+        case 21:
+            xFreq = ofMap(message.value, 0, 127, xFreq.getMin(), xFreq.getMax());
+            break;
+        case 22:
+            yFreq = ofMap(message.value, 0, 127, yFreq.getMin(), yFreq.getMax());
+            break;
+        case 23:
+            xWidth = ofMap(message.value, 0, 127, xWidth.getMin(), xWidth.getMax());
+            break;
+        case 24:
+            yHeight = ofMap(message.value, 0, 127, yHeight.getMin(), yHeight.getMax());
+            break;
+        case 25:
+            speed = ofMap(message.value, 0, 127, speed.getMin(), speed.getMax());
+            break;
+        case 26:
+            numShapes = ofMap(message.value, 0, 127, numShapes.getMin(), numShapes.getMax());
+            break;
+        default:
+            cout << message.control << " not assigned" << endl;
+            
+    }
     
 }
 
